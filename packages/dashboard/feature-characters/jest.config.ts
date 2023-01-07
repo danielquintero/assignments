@@ -1,7 +1,7 @@
 /* eslint-disable */
 export default {
-  displayName: 'star-wars',
-  preset: '../../jest.preset.js',
+  displayName: 'dashboard-feature-characters',
+  preset: '../../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
     'ts-jest': {
@@ -9,7 +9,7 @@ export default {
       stringifyContentPathRegex: '\\.(html|svg)$',
     },
   },
-  coverageDirectory: '../../coverage/packages/star-wars',
+  coverageDirectory: '../../../coverage/packages/dashboard/feature-characters',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': 'jest-preset-angular',
   },
