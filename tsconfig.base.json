@@ -15,6 +15,9 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@challenges/dashboard/data-access": [
+        "packages/dashboard/data-access/src/index.ts"
+      ],
       "@challenges/dashboard/feature-characters": [
         "packages/dashboard/feature-characters/src/index.ts"
       ]

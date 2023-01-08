@@ -1,15 +1,15 @@
 {
-  "name": "dashboard-feature-characters",
+  "name": "dashboard-data-access",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
-  "sourceRoot": "packages/dashboard/feature-characters/src",
+  "sourceRoot": "packages/dashboard/data-access/src",
   "prefix": "challenges",
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "packages/dashboard/feature-characters/jest.config.ts",
+        "jestConfig": "packages/dashboard/data-access/jest.config.ts",
         "passWithNoTests": true
       }
     },
@@ -18,11 +18,11 @@
       "outputs": ["{options.outputFile}"],
       "options": {
         "lintFilePatterns": [
-          "packages/dashboard/feature-characters/**/*.ts",
-          "packages/dashboard/feature-characters/**/*.html"
+          "packages/dashboard/data-access/**/*.ts",
+          "packages/dashboard/data-access/**/*.html"
         ]
       }
     }
   },
-  "tags": ["scope:dashboard", "type:feature"]
+  "tags": ["scope: dashboard", "type: data-access"]
 }
