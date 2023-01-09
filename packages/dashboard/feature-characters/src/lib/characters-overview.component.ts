@@ -7,7 +7,6 @@ import { Store } from '@ngrx/store';
 import { CharactersEntity } from './+state/characters.models';
 import * as CharactersSelectors from './+state/characters.selectors';
 import * as CharactersActions from './+state/characters.actions';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'challenges-characters-overview',
@@ -16,11 +15,11 @@ import { Observable } from 'rxjs';
   template: `
     <div class="py-5">
       <h1
-        class="mt-1 text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl h1 flex w-auto mx-auto my-0 justify-center"
+        class="mt-1 text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl h1 flex w-auto mx-auto my-0 justify-center text-center"
       >
-        Star Wars Characters Overview
+        Star Wars Characters
       </h1>
-      <ul role="list" class="space-y-3 mt-6 mb-6">
+      <ul role="list" class="space-y-3 mt-6 mb-6" data-test="character-overview-list">
         <li
           class="overflow-hidden rounded-md bg-white px-6 py-4 shadow flex w-96 mx-auto my-0"
           *ngFor="let character of characters$ | async; trackBy: trackById"
@@ -62,16 +61,17 @@ import { Observable } from 'rxjs';
             *ngFor="let page of pagesArray; let index=index"
             (click)="loadPage(index + 1)"
             [ngClass]="{
-              'text-gray-500 hover:border-gray-300 hover:text-gray-700': index !== currentPage,
-              'border-indigo-500 text-indigo-600': index === currentPage
+              'text-gray-500 hover:border-gray-300 hover:text-gray-700': index !== currentPage - 1,
+              'border-indigo-500 text-indigo-600': index === currentPage - 1
             }"
             class="inline-flex items-center border-t-2 border-transparent px-4 pt-4 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
-            >{{ page + 1 }}</a
+            >{{ page }}</a
           >
         </div>
         <div class="-mt-px flex w-0 flex-1 justify-end">
           <a
-            (click)="(currentPage < totalPages - 1) && loadPage(currentPage + 2)"
+            (click)="(currentPage < totalPages) && loadPage(currentPage + 1)"
+            data-test="character-overview-next-page"
             class="inline-flex items-center border-t-2 border-transparent pt-4 pl-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
           >
             Next
@@ -109,33 +109,37 @@ import { Observable } from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CharactersOverviewComponent implements OnInit {
-  private readonly store = inject(Store);
+  public readonly store = inject(Store);
   public readonly characters$ = this.store.select(
     CharactersSelectors.selectAllCharacters
   );
   public readonly charactersMetadata$ = this.store.select(
     CharactersSelectors.selectCharactersMetadata
   );
-  public totalPages$!: Observable<number | null>;
-  public pagesArray!: Array<number>;
+  public pagesArray: Array<number> =[];
   public totalPages!: number;
   public currentPage!: number;
 
   ngOnInit(): void {
     this.charactersMetadata$.subscribe((metadata) => {
       this.totalPages = metadata.total_pages as number;
-      this.pagesArray = Array(metadata.total_pages)
-        .fill(4)
-        .map((_, index) => index);
+
+      if (metadata.total_pages !== null) {
+        this.pagesArray = Array(metadata.total_pages)
+          .fill(1)
+          .map((_, index) => {return index + 1});
+      }
 
       if (!metadata.previous) {
-        this.currentPage = 0
+        this.currentPage = 1
       } else if (!metadata.next) {
-        this.currentPage = metadata.total_pages as number - 1
+        this.currentPage = metadata.total_pages as number
       } else {
-        const url = new URL(metadata.previous)
-        const searchParams = url.searchParams
-        this.currentPage = Number(searchParams.get('page'))
+        const urlPrevious = new URL(metadata.previous)
+        const urlNext = new URL(metadata.next)
+        const searchParamsPrevious = urlPrevious.searchParams
+        const searchParamsNext = urlNext.searchParams
+        this.currentPage = Math.floor((Number(searchParamsNext.get('page')) + Number(searchParamsPrevious.get('page')))/2)
       }
     });
   }

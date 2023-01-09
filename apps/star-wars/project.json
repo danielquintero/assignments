@@ -14,12 +14,12 @@
         "main": "apps/star-wars/src/main.ts",
         "polyfills": ["zone.js"],
         "tsConfig": "apps/star-wars/tsconfig.app.json",
-        "inlineStyleLanguage": "sass",
+        "inlineStyleLanguage": "scss",
         "assets": [
           "apps/star-wars/src/favicon.ico",
           "apps/star-wars/src/assets"
         ],
-        "styles": ["apps/star-wars/src/styles.sass"],
+        "styles": ["apps/star-wars/src/styles.scss"],
         "scripts": []
       },
       "configurations": {

@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 import { inject } from '@angular/core';
 import { Store } from '@ngrx/store';
 
@@ -8,18 +9,43 @@ import * as CharactersSelectors from './+state/characters.selectors';
 @Component({
   selector: 'challenges-character-details',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   template: `
-    <div class="overflow-hidden bg-white shadow sm:rounded-lg">
-      <div class="px-4 py-5 sm:px-6">
-        <h3 class="text-lg font-medium leading-6 text-gray-900">
-          Character Information
-        </h3>
-        <p class="mt-1 max-w-2xl text-sm text-gray-500">Personal details.</p>
+    <div class="h-screen overflow-y-scroll overflow-hidden bg-white shadow sm:rounded-lg">
+      <div class="flex flex-1">
+        <div class="flex items-center">
+          <a
+            data-test="character-details-go-back"
+            class="flex h-full items-center border-t-2 border-transparent pr-6 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
+            [routerLink]="['/dashboard']"
+          >
+            <!-- Heroicon name: mini/arrow-long-left -->
+            <svg
+              class="mr-3 h-5 w-5 text-gray-400"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+              aria-hidden="true"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M18 10a.75.75 0 01-.75.75H4.66l2.1 1.95a.75.75 0 11-1.02 1.1l-3.5-3.25a.75.75 0 010-1.1l3.5-3.25a.75.75 0 111.02 1.1l-2.1 1.95h12.59A.75.75 0 0118 10z"
+                clip-rule="evenodd"
+              />
+            </svg>
+            Back
+          </a>
+        </div>
+        <div class="flex-1 px-4 py-5 sm:px-6">
+          <h3 class="text-lg font-medium leading-6 text-gray-900">
+            Character Information
+          </h3>
+          <p class="mt-1 max-w-2xl text-sm text-gray-500">Personal details.</p>
+        </div>
       </div>
       <div class="border-t border-gray-200 px-4 py-5 sm:px-6">
         <dl class="grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2">
-          <div class="sm:col-span-1">
+          <div class="sm:col-span-1" data-test="character-details-name">
             <dt class="text-sm font-medium text-gray-500">Full name</dt>
             <dd class="mt-1 text-sm text-gray-900">
               {{ (character$ | async)?.name }}
@@ -83,7 +109,7 @@ import * as CharactersSelectors from './+state/characters.selectors';
           <div class="sm:col-span-2">
             <dt class="text-sm font-medium text-gray-500">Description</dt>
             <dd class="mt-1 text-sm text-gray-900">
-              {{(character$ | async)?.description}}
+              {{ (character$ | async)?.description }}
             </dd>
           </div>
 
