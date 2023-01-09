@@ -4,9 +4,9 @@ import { RouterModule } from '@angular/router';
 import { inject } from '@angular/core';
 import { Store } from '@ngrx/store';
 
-import { CharactersEntity } from './+state/characters.models';
-import * as CharactersSelectors from './+state/characters.selectors';
-import * as CharactersActions from './+state/characters.actions';
+import { CharactersEntity } from '@challenges/dashboard/data-access';
+import { CharactersSelector } from '@challenges/dashboard/data-access';
+import { CharactersActions } from '@challenges/dashboard/data-access';
 
 @Component({
   selector: 'challenges-characters-overview',
@@ -109,12 +109,12 @@ import * as CharactersActions from './+state/characters.actions';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CharactersOverviewComponent implements OnInit {
-  public readonly store = inject(Store);
+  private readonly store = inject(Store);
   public readonly characters$ = this.store.select(
-    CharactersSelectors.selectAllCharacters
+    CharactersSelector.selectAllCharacters
   );
   public readonly charactersMetadata$ = this.store.select(
-    CharactersSelectors.selectCharactersMetadata
+    CharactersSelector.selectCharactersMetadata
   );
   public pagesArray: Array<number> =[];
   public totalPages!: number;

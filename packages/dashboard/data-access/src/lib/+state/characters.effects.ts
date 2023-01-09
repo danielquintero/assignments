@@ -1,7 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { createEffect, Actions, ofType } from '@ngrx/effects';
 
-import { CharactersApiService } from '@challenges/dashboard/data-access';
+import { CharactersApiService } from '../characters-api.service';
 import * as CharactersActions from './characters.actions';
 import * as CharactersFeature from './characters.reducer';
 

@@ -4,8 +4,7 @@ import { CharactersOverviewComponent } from './characters-overview.component';
 import { CharacterDetailsComponent } from './character-details.component';
 import { provideState } from '@ngrx/store';
 import { provideEffects } from '@ngrx/effects';
-import * as fromCharacters from './+state/characters.reducer';
-import { CharactersEffects } from './+state/characters.effects';
+import { CharactersEffects, CharactersReducer } from '@challenges/dashboard/data-access';
 
 export const dashboardFeatureCharactersRoutes: Route[] = [
   {
@@ -17,8 +16,8 @@ export const dashboardFeatureCharactersRoutes: Route[] = [
     ],
     providers: [
       provideState(
-        fromCharacters.CHARACTERS_FEATURE_KEY,
-        fromCharacters.charactersReducer
+        CharactersReducer.CHARACTERS_FEATURE_KEY,
+        CharactersReducer.charactersReducer
       ),
       provideEffects(CharactersEffects),
     ],

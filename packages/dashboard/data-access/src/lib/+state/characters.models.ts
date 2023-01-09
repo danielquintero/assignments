@@ -1,4 +1,4 @@
-import { CharacterDetailsDto, CharacterListDto } from "@challenges/dashboard/data-access";
+import { CharacterDetailsDto, CharacterListDto } from "../character-dto";
 
 // Map DTO's to FE entities
 export type CharacterList = Pick<CharacterListDto, 'results'>;

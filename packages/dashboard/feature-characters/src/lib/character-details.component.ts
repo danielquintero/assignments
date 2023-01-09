@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 import { inject } from '@angular/core';
 import { Store } from '@ngrx/store';
 
-import * as CharactersSelectors from './+state/characters.selectors';
+import { CharactersSelector } from '@challenges/dashboard/data-access';
 
 @Component({
   selector: 'challenges-character-details',
@@ -195,6 +195,6 @@ import * as CharactersSelectors from './+state/characters.selectors';
 export class CharacterDetailsComponent {
   private readonly store = inject(Store);
   public readonly character$ = this.store.select(
-    CharactersSelectors.selectEntity
+    CharactersSelector.selectEntity
   );
 }

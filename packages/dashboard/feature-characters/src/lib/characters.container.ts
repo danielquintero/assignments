@@ -5,7 +5,7 @@ import { Store } from '@ngrx/store';
 import { inject } from '@angular/core';
 
 import { CharactersOverviewComponent } from './characters-overview.component';
-import * as CharactersActions from './+state/characters.actions';
+import { CharactersActions } from '@challenges/dashboard/data-access';
 
 
 @Component({

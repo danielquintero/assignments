@@ -20,6 +20,9 @@
       ],
       "@challenges/dashboard/feature-characters": [
         "packages/dashboard/feature-characters/src/index.ts"
+      ],
+      "@challenges/shared/utils/test-data": [
+        "packages/shared/utils/test-data/src/index.ts"
       ]
     }
   },
