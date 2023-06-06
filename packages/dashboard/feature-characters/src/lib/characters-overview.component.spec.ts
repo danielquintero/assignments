@@ -11,15 +11,16 @@ describe('FeatureCharactersComponent', () => {
 
   const createComponent = createRoutingFactory({
     component: CharactersOverviewComponent,
+    declareComponent: false,
     providers: [
       provideMockStore({
         initialState: {
           characters,
-        }
+        },
       }),
       RouterTestingModule,
     ],
-    detectChanges: false
+    detectChanges: false,
   });
 
   beforeEach(() => {

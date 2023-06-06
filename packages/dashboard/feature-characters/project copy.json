@@ -5,6 +5,23 @@
   "sourceRoot": "packages/dashboard/feature-characters/src",
   "prefix": "challenges",
   "targets": {
+    "build": {
+      "executor": "@nx/angular:ng-packagr-lite",
+      "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
+      "options": {
+        "project": "packages/dashboard/feature-characters/ng-package.json",
+        "tailwindConfig": "packages/dashboard/feature-characters/tailwind.config.js"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "packages/dashboard/feature-characters/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "packages/dashboard/feature-characters/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
     "test": {
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],

@@ -11,6 +11,7 @@ describe('CharacterDetailsComponent', () => {
 
   const createComponent = createRoutingFactory({
     component: CharacterDetailsComponent,
+    declareComponent: false,
     providers: [
       provideMockStore({
         initialState: {

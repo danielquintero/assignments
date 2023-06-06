@@ -1,4 +1,4 @@
-const { createGlobPatternsForDependencies } = require('@nrwl/angular/tailwind');
+const { createGlobPatternsForDependencies } = require('@nx/angular/tailwind');
 const { join } = require('path');
 
 /** @type {import('tailwindcss').Config} */
@@ -10,7 +10,5 @@ module.exports = {
   theme: {
     extend: {},
   },
-  plugins: [
-    require('@tailwindcss/forms'),
-  ],
+  plugins: [require('@tailwindcss/forms')],
 };

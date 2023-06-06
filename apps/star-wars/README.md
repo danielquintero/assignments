@@ -10,15 +10,16 @@ SWC is the application implementing the requirements laid out in the assessment 
 - The list should be paginated. ✅
 - 10 characters per page maximum. ✅
 - Every routed view should be linked to its previous route and to the character list route and
-preserve the pagination. ✅
+  preserve the pagination. ✅
 - You do not use NgModules but standalone components. ✅
 - You add a minimal test coverage for unit tests.
 - You can handle state management so that if we navigate to a previously
-visited routed view, we don’t need to call the API again. ✅
+  visited routed view, we don’t need to call the API again. ✅
 - You add a minimal e2e with Cypress. ✅
 - UX/UI is responsive and friendly. ✅
 
 Extras
+
 - Showcase knowledge of domain driven architecture (DTO's, entities and feature & data-access libraries) ✅
 
 ### Getting started
@@ -77,7 +78,7 @@ Below are our core plugins:
 - Web (no framework frontends)
   - `npm install --save-dev @nrwl/web`
 - [Angular](https://angular.io)
-  - `npm install --save-dev @nrwl/angular`
+  - `npm install --save-dev @nx/angular`
 - [Nest](https://nestjs.com)
   - `npm install --save-dev @nrwl/nest`
 - [Express](https://expressjs.com)
