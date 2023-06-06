@@ -21,6 +21,25 @@
       "@challenges/dashboard/feature-characters": [
         "packages/dashboard/feature-characters/src/index.ts"
       ],
+      "@challenges/fedex-dashboard": [
+        "packages/fedex/dashboard/feature-shell/src/index.ts"
+      ],
+      "@challenges/fedex-iam-data-access": [
+        "packages/fedex/iam/data-access/src/index.ts"
+      ],
+      "@challenges/fedex-iam-shell": [
+        "packages/fedex/iam/feature-shell/src/index.ts"
+      ],
+      "@challenges/fedex-iam-sign-in": [
+        "packages/fedex/iam/feature-sign-in/src/index.ts"
+      ],
+      "@challenges/fedex-iam-sign-up": [
+        "packages/fedex/iam/feature-sign-up/src/index.ts"
+      ],
+      "@challenges/fedex-iam-util": ["packages/fedex/iam/util/src/index.ts"],
+      "@challenges/shared/util-forms": [
+        "packages/shared/util-forms/src/index.ts"
+      ],
       "@challenges/shared/utils/test-data": [
         "packages/shared/utils/test-data/src/index.ts"
       ]

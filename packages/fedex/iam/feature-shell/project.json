@@ -1,0 +1,34 @@
+{
+  "name": "fedex-iam-feature-shell",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/fedex/iam/feature-shell/src",
+  "prefix": "fedex-iam-shell",
+  "tags": ["type:lib", "scope:fedex"],
+  "projectType": "library",
+  "targets": {
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "packages/fedex/iam/feature-shell/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "packages/fedex/iam/feature-shell/**/*.ts",
+          "packages/fedex/iam/feature-shell/**/*.html"
+        ]
+      }
+    }
+  }
+}
