@@ -5,7 +5,7 @@ export const appRoutes: Route[] = [
   {
     path: 'dashboard',
     loadChildren: () =>
-      import('@challenges/dashboard/feature-characters').then(
+      import('@challenges/henkel-dashboard-characters').then(
         (m) => m.dashboardFeatureCharactersRoutes
       ),
   },

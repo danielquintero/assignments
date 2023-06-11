@@ -15,12 +15,6 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@challenges/dashboard/data-access": [
-        "packages/dashboard/data-access/src/index.ts"
-      ],
-      "@challenges/dashboard/feature-characters": [
-        "packages/dashboard/feature-characters/src/index.ts"
-      ],
       "@challenges/fedex-dashboard": [
         "packages/fedex/dashboard/feature-shell/src/index.ts"
       ],
@@ -37,6 +31,12 @@
         "packages/fedex/iam/feature-sign-up/src/index.ts"
       ],
       "@challenges/fedex-iam-util": ["packages/fedex/iam/util/src/index.ts"],
+      "@challenges/henkel-dashboard-characters": [
+        "packages/henkel/dashboard/feature-characters/src/index.ts"
+      ],
+      "@challenges/henkle-dashboard-data-access": [
+        "packages/henkel/dashboard/data-access/src/index.ts"
+      ],
       "@challenges/shared/util-forms": [
         "packages/shared/util-forms/src/index.ts"
       ],

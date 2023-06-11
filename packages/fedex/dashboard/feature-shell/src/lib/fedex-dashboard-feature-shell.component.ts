@@ -7,9 +7,10 @@ import { selectEntity } from '@challenges/fedex-iam-data-access';
   selector: 'fedex-dashboard-fedex-dashboard-feature-shell',
   standalone: true,
   imports: [CommonModule],
-  template: `<p class="text-gray-400 h-1 text-4xl text-center">
-    Hi <span> {{ (username$ | async)?.firstName }}</span> Welcome to the
-    <span class="text-indigo-600"> FedEx </span> shipping platform!
+  template: ` <p class="text-gray-400 h-1 text-4xl text-center">
+    Hi <span> {{ (username$ | async)?.firstName }}</span
+    >, welcome to the <span class="text-indigo-600"> FedEx </span> shipping
+    platform!
   </p>`,
   styles: [],
   changeDetection: ChangeDetectionStrategy.OnPush,
