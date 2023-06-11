@@ -39,7 +39,9 @@ export function includesValues(
   controls: Array<string>
 ): boolean {
   return controls.some((control) =>
-    value.includes(form.controls[control].value)
+    form.controls[control].value === ''
+      ? false
+      : value.includes(form.controls[control].value)
   );
 }
 

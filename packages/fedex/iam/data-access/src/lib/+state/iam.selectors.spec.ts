@@ -9,11 +9,19 @@ import * as IamSelectors from './iam.selectors';
 describe('Iam Selectors', () => {
   const ERROR_MSG = 'No Error Available';
   const getIamId = (it: UserEntity) => it.id;
-  const createIamEntity = (id: string, name = '') =>
-    ({
-      id,
-      name: name || `name-${id}`,
-    } as UserEntity);
+  const createIamEntity = (
+    id: string,
+    firstName = '',
+    lastName = '',
+    email = '',
+    isActive = true
+  ): UserEntity => ({
+    id,
+    firstName: firstName || `firstName-${id}`,
+    lastName: lastName || `lastName-${id}`,
+    email: email || `${firstName}.${lastName}-@email.com`,
+    isActive,
+  });
 
   let state: IAMSignUpPartialState;
 

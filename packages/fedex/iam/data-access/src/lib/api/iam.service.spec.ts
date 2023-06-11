@@ -4,9 +4,9 @@ import {
   SpectatorHttp,
 } from '@ngneat/spectator/jest';
 
-import { IAMService as ServiceUnderTest } from './iam.service';
+import { IdentityAccessManagementService as ServiceUnderTest } from './iam.service';
 
-describe(ServiceUnderTest.name, () => {
+describe('IdentityAccessManagementService', () => {
   let spectator: SpectatorHttp<ServiceUnderTest>;
   let service: ServiceUnderTest;
   let endpointURL: string;

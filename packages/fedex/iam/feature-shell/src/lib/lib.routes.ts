@@ -3,13 +3,6 @@ import { FedexIamFeatureShellComponent } from './fedex-iam-feature-shell.compone
 
 export const fedexIamFeatureShellRoutes: Route[] = [
   {
-    path: 'sign-in',
-    loadChildren: () =>
-      import('@challenges/fedex-iam-sign-in').then(
-        (m) => m.fedexIamFeatureSignInRoutes
-      ),
-  },
-  {
     path: '',
     component: FedexIamFeatureShellComponent,
     children: [
@@ -18,6 +11,13 @@ export const fedexIamFeatureShellRoutes: Route[] = [
         loadChildren: () =>
           import('@challenges/fedex-iam-sign-up').then(
             (m) => m.fedexIamFeatureSignUpRoutes
+          ),
+      },
+      {
+        path: 'sign-in',
+        loadChildren: () =>
+          import('@challenges/fedex-iam-sign-in').then(
+            (m) => m.fedexIamFeatureSignInRoutes
           ),
       },
     ],

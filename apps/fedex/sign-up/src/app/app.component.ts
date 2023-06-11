@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
-  selector: 'sign-up-root',
+  selector: 'fedex-sign-up-root',
   standalone: true,
   imports: [CommonModule, RouterOutlet],
   template: `<router-outlet></router-outlet>`,

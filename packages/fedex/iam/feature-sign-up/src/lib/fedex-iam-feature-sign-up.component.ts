@@ -38,7 +38,7 @@ import { RouterModule } from '@angular/router';
         <div class="fedex-iam-signup-content">
           <div class="fedex-iam-signup-card">
             <form
-              [formGroup]="signupForm"
+              [formGroup]="signUpForm"
               (submit)="onSubmit()"
               class="space-y-6"
             >
@@ -142,7 +142,7 @@ import { RouterModule } from '@angular/router';
                   class="input-errors"
                   data-test-id="password-errors"
                   *ngIf="
-                    (password.invalid || signupForm.errors?.['mustNotMatch']) &&
+                    (password.invalid || signUpForm.errors?.['mustNotMatch']) &&
                     password.touched
                   "
                 >
@@ -156,7 +156,7 @@ import { RouterModule } from '@angular/router';
                     >password should contain at least one lower, upper, digit
                     and symbol character</span
                   >
-                  <span *ngIf="signupForm.getError('mustNotMatch')"
+                  <span *ngIf="signUpForm.getError('mustNotMatch')"
                     >password should not contain first or last name</span
                   >
                 </div>
@@ -190,9 +190,9 @@ import { RouterModule } from '@angular/router';
                 <button
                   type="submit"
                   data-cy="submit"
-                  [disabled]="signupForm.invalid"
+                  [disabled]="signUpForm.invalid"
                   [ngClass]="{
-                    'disabled:opacity-50 cursor-not-allowed': signupForm.invalid
+                    'disabled:opacity-50 cursor-not-allowed': signUpForm.invalid
                   }"
                   class="submit-btn"
                 >
@@ -342,10 +342,10 @@ export class FedexIamFeatureSignUpComponent {
   readonly password = new FormControl('', [
     Validators.required,
     Validators.minLength(8),
-    ValidatePasswordStrength,
+    ValidatePasswordStrength(),
   ]);
   readonly rememberMe = new FormControl<boolean>(false);
-  readonly signupForm: FormGroup = this.formBuilder.group(
+  readonly signUpForm: FormGroup = this.formBuilder.group(
     {
       firstName: this.firstName,
       lastName: this.lastName,
@@ -359,6 +359,6 @@ export class FedexIamFeatureSignUpComponent {
   );
 
   onSubmit() {
-    this.store.dispatch(initSignUp(this.signupForm.value));
+    this.store.dispatch(initSignUp(this.signUpForm.value));
   }
 }

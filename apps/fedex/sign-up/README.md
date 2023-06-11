@@ -2,13 +2,15 @@
 
 # User sign up
 
+I decided to use Nx monorepo for this code assessment because apart from offering A+ type support for Angular and it's environment I think it is a great tool for companies/products at scale.
+
 ## Overview & project setup
 
-The user sign up application is a shell application based on a monorepo setup. The shell application only takes care of bootstraping and loading the initial application modules, configurations etc. It leverages lazy loading of views via lazy loaded route modules (packages).
+The user sign up application is a shell application. The shell application only takes care of bootstraping and loading the initial application modules, configurations etc. It leverages lazy loading of views via lazy loaded route modules (packages).
 
 For the assessment, I kept in mind the requirements, mentioned above, I used the tools that I am more experienced with and I think have the best DX. Furthermore, I have used some extras to showcase how some organisational challenges e.g.(orchestration of frontend applications, design system, mocking, testing etc) can be addressed with proper tooling (NX monorepo, cypress, storybook, miragejs, ngspectator etc).
 
-The application has one main protected/guarded route `/app/dashboard` which requires a user to be signed in. Unprotected routes are `/sign-in` and `/sign-up`. This assessment focused on the second one, where the logic/validation is implemented as requested. The other route allows a user to login to a "mocked" dashboard but it is outside the scope of the excersie and it's only there to give an idea of how the sign in could be implemented.
+The application has one main protected/guarded route `/dashboard` which requires a user to be signed in. Unprotected routes are `/sign-in` and `/sign-up`. This assessment focused on the second one, where the logic/validation is implemented as requested. The other route allows a user to login to a "mocked" dashboard but it is outside the scope of the excersie and it's only there to give an idea of how the sign in could be implemented.
 
 ### Store
 
@@ -16,13 +18,13 @@ Ngrx is used as state management library. It is used with the library standards 
 
 ### Styles
 
-To quickly help put together some pleasing UI, I have used Tailwind CSS. I tried to make templates more readable by using `@apply` in `.css` files rather than cluttered the templates.
+To quickly help put together some pleasing UI, I have used Tailwind CSS. I tried to make templates more readable by using `@apply` in `.inlineTemplateStyles` rather than clutter the templates with classes.
 
 ### Domain Driven Design
 
-This is out of scope for the assessment but I thought would be good to share how we could follow a DDD approach, we could generated clients/types from Backend specifications (Swagger, OpenAPI) to enforce the correctness of our frontend applications.
+This is out of scope for the assessment but I thought it would be good to share how we could farily easy follow a DDD approach. Since Nx promotes building smaller pieces with high shareability we could generated clients i.e.(services, types etc) from Backend specifications (Swagger, OpenAPI) to enforce the correctness of our frontend applications in regards with the backend response payloads and also create this domain context within our frontend code.
 
-The scenario for this example is simplified, but would not take much more effort to make it a real life example. `libs/shared/iam/data-access/src/lib/+state/iam.models.ts` shows how we can produce frontend library types from DTO types thanks to Typescript utility types. Besides inferring generated types, we can also generate entire clients (angular services) to fully rely on the Backend contract signature.
+The scenario for this example is simplified, but would not take much more effort to make it a real life example. `libs/shared/iam/data-access/src/lib/+state/iam.models.ts` shows how we can produce frontend library types from DTO types thanks to Typescript utility types. Besides inferring generated types, we can also generate entire clients (angular services) to fully rely on the Backend contract signature as I mentioned earlier.
 
 ### Mocking
 
@@ -56,9 +58,11 @@ To run the sign up application simply run `nx serve sign-up`, make sure you have
 
 ### Test & lint targets
 
-To run lint or unit test, you can simply run `nx run-many -t test --projects=fedex-\* --parallel` or `nx run-many --target=lint --projects=fedex-\* --parallel` for testing or linting every app/library, respectively.
+To run lint or unit test that are related to this assignment, you can simply run `nx run-many -t test --projects=fedex-\* --parallel --coverage` or `nx run-many --target=lint --projects=fedex-\* --parallel` for testing or linting every app/library, respectively.
 
 Integration tests are also available for the features requested. You can run Cypress by `nx run-many -t e2e --projects=fedex-\* --parallel --watch`.
+
+**_Tests coverage will be created under coverage folder (at the workspace root level) and will be organised per application/package_**
 
 ## Aproaching the assessment
 

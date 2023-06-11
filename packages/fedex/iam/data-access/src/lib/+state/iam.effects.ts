@@ -1,6 +1,6 @@
 import { Injectable, inject } from '@angular/core';
 import { createEffect, Actions, ofType } from '@ngrx/effects';
-import { switchMap, catchError, of, tap, mergeMap } from 'rxjs';
+import { switchMap, catchError, of, tap, mergeMap, throwError } from 'rxjs';
 import { IdentityAccessManagementService } from '../api/iam.service';
 import {
   initSignIn,
@@ -40,11 +40,14 @@ export class IamEffects {
               );
             }),
             catchError((error) => {
-              console.error('Error', error);
-              return of(signUpFailure({ error }));
+              return throwError(() => error);
             })
           )
-      )
+      ),
+      catchError((error) => {
+        console.error('Error', error);
+        return of(signUpFailure({ error }));
+      })
     )
   );
 
@@ -66,11 +69,14 @@ export class IamEffects {
             );
           }),
           catchError((error) => {
-            console.error('Error', error);
-            return of(signInFailure({ error }));
+            return throwError(() => error);
           })
         )
-      )
+      ),
+      catchError((error) => {
+        console.error('Error', error);
+        return of(signInFailure({ error }));
+      })
     )
   );
 

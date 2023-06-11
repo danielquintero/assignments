@@ -13,7 +13,6 @@ import { email } from '@challenges/shared/util-forms';
 import {
   initSignIn,
   selectIamError,
-  selectIamLoaded,
   selectIamProcessing,
 } from '@challenges/fedex-iam-data-access';
 
@@ -42,7 +41,7 @@ import {
           <div class="fedex-iam-signin-card">
             <form
               class="space-y-6"
-              [formGroup]="signinForm"
+              [formGroup]="signInForm"
               (submit)="onSubmit()"
             >
               <div>
@@ -127,9 +126,9 @@ import {
                 <button
                   type="submit"
                   data-cy="submit"
-                  [disabled]="signinForm.invalid"
+                  [disabled]="signInForm.invalid"
                   [ngClass]="{
-                    'disabled:opacity-50 cursor-not-allowed': signinForm.invalid
+                    'disabled:opacity-50 cursor-not-allowed': signInForm.invalid
                   }"
                   class="submit-btn"
                 >
@@ -369,12 +368,12 @@ export class FedexIamFeatureSignInComponent {
     Validators.pattern(email),
   ]);
   readonly password = new FormControl('', [Validators.required]);
-  readonly signinForm: FormGroup = this.formBuilder.group({
+  readonly signInForm: FormGroup = this.formBuilder.group({
     email: this.email,
     password: this.password,
   });
 
   onSubmit() {
-    this.store.dispatch(initSignIn(this.signinForm.value));
+    this.store.dispatch(initSignIn(this.signInForm.value));
   }
 }

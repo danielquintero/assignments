@@ -1,6 +1,6 @@
 {
-  "name": "sign-up",
-  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "name": "fedex-sign-up",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
   "generators": {
     "@schematics/angular:component": {
@@ -16,27 +16,24 @@
       "standalone": true
     }
   },
-  "sourceRoot": "apps/sign-up/src",
-  "prefix": "sign-up",
+  "sourceRoot": "apps/fedex/sign-up/src",
+  "prefix": "fedex-sign-up",
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
+      "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/sign-up",
-        "index": "apps/sign-up/src/index.html",
-        "main": "apps/sign-up/src/main.ts",
-        "polyfills": [
-          "zone.js"
-        ],
-        "tsConfig": "apps/sign-up/tsconfig.app.json",
+        "outputPath": "dist/apps/fedex-sign-up",
+        "index": "apps/fedex/sign-up/src/index.html",
+        "main": "apps/fedex/sign-up/src/main.ts",
+        "polyfills": ["zone.js"],
+        "tsConfig": "apps/fedex/sign-up/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": [
-          "apps/sign-up/src/favicon.ico",
-          "apps/sign-up/src/assets"
+          "apps/fedex/sign-up/src/favicon.ico",
+          "apps/fedex/sign-up/src/assets"
         ],
-        "styles": [
-          "apps/sign-up/src/styles.scss"
-        ],
+        "styles": ["apps/fedex/sign-up/src/styles.scss"],
         "scripts": []
       },
       "configurations": {
@@ -49,8 +46,8 @@
             },
             {
               "type": "anyComponentStyle",
-              "maximumWarning": "2kb",
-              "maximumError": "4kb"
+              "maximumWarning": "6kb",
+              "maximumError": "10kb"
             }
           ],
           "outputHashing": "all"
@@ -64,8 +61,8 @@
           "namedChunks": true,
           "fileReplacements": [
             {
-              "replace": "apps/sign-up/src/environments/environment.ts",
-              "with": "apps/sign-up/src/environments/environment.development.ts"
+              "replace": "apps/fedex/sign-up/src/environments/environment.ts",
+              "with": "apps/fedex/sign-up/src/environments/environment.development.ts"
             }
           ]
         }
@@ -76,10 +73,10 @@
       "executor": "@angular-devkit/build-angular:dev-server",
       "configurations": {
         "production": {
-          "browserTarget": "sign-up:build:production"
+          "browserTarget": "fedex-sign-up:build:production"
         },
         "development": {
-          "browserTarget": "sign-up:build:development"
+          "browserTarget": "fedex-sign-up:build:development"
         }
       },
       "defaultConfiguration": "development"
@@ -87,16 +84,14 @@
     "extract-i18n": {
       "executor": "@angular-devkit/build-angular:extract-i18n",
       "options": {
-        "browserTarget": "sign-up:build"
+        "browserTarget": "fedex-sign-up:build"
       }
     },
     "test": {
       "executor": "@nx/jest:jest",
-      "outputs": [
-        "{workspaceRoot}/coverage/{projectRoot}"
-      ],
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "apps/sign-up/jest.config.ts",
+        "jestConfig": "apps/fedex/sign-up/jest.config.ts",
         "passWithNoTests": true
       }
     }

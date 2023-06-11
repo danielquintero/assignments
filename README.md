@@ -2,7 +2,7 @@
 
 This monorepo contains the following applications
 
-- [User sign-up form](./apps/sign-up/README.md)
+- [User sign-up form](./apps/fedex/sign-up/README.md)
 - [Starwars charaters dashboard](./apps/star-wars/README.md)
 
 <br/>
