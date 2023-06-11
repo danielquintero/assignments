@@ -1,15 +1,15 @@
 {
-  "name": "shared-utils-test-data",
-  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "name": "shared-util-test-data",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
-  "sourceRoot": "packages/shared/utils/test-data/src",
+  "sourceRoot": "packages/shared/util-test-data/src",
   "prefix": "challenges",
   "targets": {
     "test": {
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "packages/shared/utils/test-data/jest.config.ts",
+        "jestConfig": "packages/shared/util-test-data/jest.config.ts",
         "passWithNoTests": true
       }
     },
@@ -18,8 +18,8 @@
       "outputs": ["{options.outputFile}"],
       "options": {
         "lintFilePatterns": [
-          "packages/shared/utils/test-data/**/*.ts",
-          "packages/shared/utils/test-data/**/*.html"
+          "packages/shared/util-test-data/**/*.ts",
+          "packages/shared/util-test-data/**/*.html"
         ]
       }
     }

@@ -2,7 +2,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { createRoutingFactory, Spectator } from '@ngneat/spectator/jest';
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
 
-import { characters } from '@challenges/shared/utils/test-data';
+import { characters } from '@challenges/shared-util-test-data';
 import { CharactersOverviewComponent } from './characters-overview.component';
 
 describe('FeatureCharactersComponent', () => {

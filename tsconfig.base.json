@@ -37,11 +37,11 @@
       "@challenges/henkle-dashboard-data-access": [
         "packages/henkel/dashboard/data-access/src/index.ts"
       ],
+      "@challenges/shared-util-test-data": [
+        "packages/shared/util-test-data/src/index.ts"
+      ],
       "@challenges/shared/util-forms": [
         "packages/shared/util-forms/src/index.ts"
-      ],
-      "@challenges/shared/utils/test-data": [
-        "packages/shared/utils/test-data/src/index.ts"
       ]
     }
   },

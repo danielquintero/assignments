@@ -1,10 +1,10 @@
 /* eslint-disable */
 export default {
-  displayName: 'shared-utils-test-data',
-  preset: '../../../../jest.preset.js',
+  displayName: 'shared-util-test-data',
+  preset: '../../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {},
-  coverageDirectory: '../../../../coverage/packages/shared/utils/test-data',
+  coverageDirectory: '../../../coverage/packages/shared/util-test-data',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': [
       'jest-preset-angular',

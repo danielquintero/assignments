@@ -2,7 +2,7 @@ import { Spectator, createRoutingFactory } from '@ngneat/spectator/jest';
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { CharactersSelector } from '@challenges/henkle-dashboard-data-access';
-import { charactersWithDetail } from '@challenges/shared/utils/test-data';
+import { charactersWithDetail } from '@challenges/shared-util-test-data';
 import { CharacterDetailsComponent } from './character-details.component';
 
 describe('CharacterDetailsComponent', () => {
