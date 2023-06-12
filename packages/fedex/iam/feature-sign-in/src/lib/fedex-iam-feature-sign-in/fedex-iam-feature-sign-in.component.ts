@@ -36,7 +36,9 @@ import {
         </div>
       </ng-container>
 
-      <ng-container *ngIf="(isProcessing$ | async) !== true; else elseTemplate">
+      <ng-container
+        *ngIf="(isProcessing$ | async) !== true; else loadingTemplate"
+      >
         <div class="fedex-iam-signin-content">
           <div class="fedex-iam-signin-card">
             <form
@@ -208,7 +210,7 @@ import {
       </ng-container>
     </div>
 
-    <ng-template #elseTemplate>
+    <ng-template #loadingTemplate>
       <div id="loadingTpl" class="flex justify-center mt-6">Loading...</div>
     </ng-template>
   `,

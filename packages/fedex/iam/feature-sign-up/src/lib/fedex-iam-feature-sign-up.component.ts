@@ -24,7 +24,9 @@ import { RouterModule } from '@angular/router';
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule, RouterModule],
   template: `<div class="fedex-iam-signup">
-      <ng-container *ngIf="(isProcessing$ | async) !== true; else elseTemplate">
+      <ng-container
+        *ngIf="(isProcessing$ | async) !== true; else loadingTemplate"
+      >
         <h2 class="fedex-iam-signup-create-account">Create a new account</h2>
         <p class="fedex-iam-signup-signin">
           Or
@@ -206,7 +208,7 @@ import { RouterModule } from '@angular/router';
       </ng-container>
     </div>
 
-    <ng-template #elseTemplate>
+    <ng-template #loadingTemplate>
       <div id="loadingTpl" class="flex justify-center mt-6">Loading...</div>
     </ng-template> `,
   styles: [
