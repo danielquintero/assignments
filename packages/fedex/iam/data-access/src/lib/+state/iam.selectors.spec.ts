@@ -5,9 +5,9 @@ import {
   initialIAMState,
 } from './iam.reducer';
 import * as IamSelectors from './iam.selectors';
+import { createHttpErrorResponse } from '@challenges/shared-util-test-data';
 
 describe('Iam Selectors', () => {
-  const ERROR_MSG = 'No Error Available';
   const getIamId = (it: UserEntity) => it.id;
   const createIamEntity = (
     id: string,
@@ -36,7 +36,12 @@ describe('Iam Selectors', () => {
         {
           ...initialIAMState,
           selectedId: 'PRODUCT-BBB',
-          error: ERROR_MSG,
+          error: createHttpErrorResponse(
+            400,
+            'Bad Request',
+            'http://localhost:3333/api/v1/iam/signup',
+            { errors: ['Email already exists'] }
+          ),
           loaded: true,
         }
       ),
@@ -67,8 +72,8 @@ describe('Iam Selectors', () => {
 
     it('selectIamError() should return the current "error" state', () => {
       const result = IamSelectors.selectIamError(state);
-
-      expect(result).toBe(ERROR_MSG);
+      console.log(result);
+      expect(result).toBe('Email already exists');
     });
   });
 });

@@ -18,7 +18,9 @@ export const selectIamProcessing = createSelector(
 
 export const selectIamError = createSelector(
   selectIamState,
-  (state: IAMState) => state.error
+  (state: IAMState) => {
+    return state.error?.error.errors[0] ?? state.error?.message;
+  }
 );
 
 export const selectAllIam = createSelector(selectIamState, (state: IAMState) =>

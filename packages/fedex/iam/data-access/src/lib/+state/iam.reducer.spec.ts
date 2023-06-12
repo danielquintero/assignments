@@ -3,7 +3,7 @@ import { Action } from '@ngrx/store';
 import * as IamActions from './iam.actions';
 import { UserEntity } from './iam.models';
 import { IAMState, initialIAMState, iamReducer } from './iam.reducer';
-import { HttpErrorResponse } from '@angular/common/http';
+import { createHttpErrorResponse } from '@challenges/shared-util-test-data';
 
 describe('IAM Reducer', () => {
   const createIamEntity = (
@@ -19,14 +19,6 @@ describe('IAM Reducer', () => {
     email: email || `${firstName}.${lastName}-@email.com`,
     isActive,
   });
-
-  const createHttpErrorResponse = (
-    status: number,
-    statusText: string,
-    url: string,
-    error: string
-  ): HttpErrorResponse =>
-    new HttpErrorResponse({ error, status, statusText, url });
 
   describe('valid IAM actions', () => {
     it('signUpSuccess should return the user', () => {
@@ -44,7 +36,7 @@ describe('IAM Reducer', () => {
         400,
         'Bad Request',
         'http://localhost:3333/api/v1/iam/signup',
-        'Email already exists'
+        { errors: ['Email already exists'] }
       );
       const action = IamActions.signUpFailure({ error });
 
@@ -52,7 +44,9 @@ describe('IAM Reducer', () => {
 
       expect(result.loaded).toBe(false);
       expect(result.ids.length).toBe(0);
-      expect(result.error).toBe(error.message);
+      expect(result.error?.error.errors.includes('Email already exists')).toBe(
+        true
+      );
       expect(result.selectedId).toBe(undefined);
     });
     it('signInSuccess should return the user', () => {

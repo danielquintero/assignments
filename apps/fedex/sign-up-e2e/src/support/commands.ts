@@ -14,6 +14,9 @@ declare namespace Cypress {
   interface Chainable<Subject> {
     login(email: string, password: string): void;
   }
+  interface ApplicationWindow {
+    handleFromCypress(request: Request): Promise<[number, Headers, string]>;
+  }
 }
 //
 // -- This is a parent command --
@@ -31,3 +34,28 @@ Cypress.Commands.add('login', (email, password) => {
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
+
+Cypress.on('window:before:load', (win: Cypress.ApplicationWindow) => {
+  win.handleFromCypress = function (
+    request: Request & {
+      requestBody: string;
+      requestHeaders: Record<string, string>;
+    }
+  ) {
+    return fetch(request.url, {
+      method: request.method,
+      headers: request.requestHeaders,
+      body: request.requestBody,
+    }).then((res: Response) => {
+      const content = res.headers
+        .get('content-type')
+        .includes('application/json')
+        ? res.json()
+        : res.text();
+
+      return new Promise((resolve) => {
+        content.then((body) => resolve([res.status, res.headers, body]));
+      });
+    });
+  };
+});

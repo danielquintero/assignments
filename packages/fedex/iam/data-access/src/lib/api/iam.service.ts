@@ -15,10 +15,6 @@ export class IdentityAccessManagementService {
   }
 
   signin(body: UserSignIn): Observable<{ user: UserProfile }> {
-    return this.http.post<{ user: UserProfile }>(
-      `${this.endpointURL}/signin`,
-      body,
-      {}
-    );
+    return this.http.post<{ user: UserProfile }>('/api/signin', body, {});
   }
 }

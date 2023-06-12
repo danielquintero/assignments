@@ -37,6 +37,9 @@
       "@challenges/henkle-dashboard-data-access": [
         "packages/henkel/dashboard/data-access/src/index.ts"
       ],
+      "@challenges/shared-util-mocking": [
+        "packages/shared/util-mocking/src/index.ts"
+      ],
       "@challenges/shared-util-test-data": [
         "packages/shared/util-test-data/src/index.ts"
       ],

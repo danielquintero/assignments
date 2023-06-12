@@ -16,6 +16,6 @@ import { selectEntity } from '@challenges/fedex-iam-data-access';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FedexDashboardFeatureShellComponent {
-  readonly store = inject(Store);
-  readonly username$ = this.store.select(selectEntity);
+  private readonly store = inject(Store);
+  public readonly username$ = this.store.select(selectEntity);
 }

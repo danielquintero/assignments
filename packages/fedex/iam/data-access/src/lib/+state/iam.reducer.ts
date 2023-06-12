@@ -3,6 +3,7 @@ import { createReducer, on, Action } from '@ngrx/store';
 
 import * as IAMActions from './iam.actions';
 import { UserEntity } from './iam.models';
+import { HttpErrorResponse } from '@angular/common/http';
 
 export const IAM_FEATURE_KEY = 'iam';
 
@@ -10,7 +11,7 @@ export interface IAMState extends EntityState<UserEntity> {
   selectedId?: string | number; // which Iam record has been selected
   isProcessing: boolean;
   loaded: boolean; // has the Iam list been loaded
-  error?: string | null; // last known error (if any)
+  error?: HttpErrorResponse | null; // last known error (if any)
 }
 
 export interface IAMSignUpPartialState {
@@ -42,9 +43,9 @@ const reducer = createReducer(
       selectedId: user.id,
     })
   ),
-  on(IAMActions.signUpFailure, (state, { error: { message } }) => ({
+  on(IAMActions.signUpFailure, (state, { error }) => ({
     ...state,
-    error: message,
+    error,
     isProcessing: false,
   })),
   on(IAMActions.initSignIn, (state) => ({
@@ -61,9 +62,9 @@ const reducer = createReducer(
       selectedId: user.id,
     })
   ),
-  on(IAMActions.signInFailure, (state, { error: { message } }) => ({
+  on(IAMActions.signInFailure, (state, { error }) => ({
     ...state,
-    error: message,
+    error,
     isProcessing: false,
   }))
 );

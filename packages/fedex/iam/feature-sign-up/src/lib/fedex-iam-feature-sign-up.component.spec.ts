@@ -8,7 +8,9 @@ import { email } from '@challenges/shared/util-forms';
 describe('FedexIamFeatureSignUpComponent', () => {
   let component: FedexIamFeatureSignUpComponent;
   let fixture: ComponentFixture<FedexIamFeatureSignUpComponent>;
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   let store: MockStore;
+
   const initialState = {};
 
   function fillOutForm(overrides = {}) {

@@ -58,9 +58,14 @@ To run the sign up application simply run `nx serve sign-up`, make sure you have
 
 ### Test & lint targets
 
-To run lint or unit test that are related to this assignment, you can simply run `nx run-many -t test --projects=fedex-\* --parallel --coverage` or `nx run-many --target=lint --projects=fedex-\* --parallel` for testing or linting every app/library, respectively.
+To run lint or unit test that are related to this assignment, you can simply run:
 
-Integration tests are also available for the features requested. You can run Cypress by `nx run-many -t e2e --projects=fedex-\* --parallel --watch`.
+- `nx run-many -t test --projects=fedex-\* --parallel --coverage` for unit tests
+- `nx run-many --target=lint --projects=fedex-\* --parallel` for linting every app/library, respectively.
+
+Integration/e2e tests are also available for the features requested. You can run Cypress by running any of the following command:
+
+- `nx e2e fedex-sign-up-e2e --watch`
 
 **_Tests coverage will be created under coverage folder (at the workspace root level) and will be organised per application/package_**
 

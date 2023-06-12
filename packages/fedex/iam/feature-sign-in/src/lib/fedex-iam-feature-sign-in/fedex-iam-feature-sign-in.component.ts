@@ -31,7 +31,7 @@ import {
       </p>
 
       <ng-container *ngIf="signInError$ | async as error">
-        <div data-test-id="signin-errors" class="fedex-iam-signin-errors">
+        <div data-testid="signin-errors" class="fedex-iam-signin-errors">
           {{ error }}
         </div>
       </ng-container>
@@ -61,7 +61,7 @@ import {
                 </div>
                 <div
                   class="input-errors"
-                  data-test-id="email-errors"
+                  data-testid="email-errors"
                   *ngIf="email.invalid && email.touched"
                 >
                   <span *ngIf="email.getError('required')"
@@ -90,7 +90,7 @@ import {
                 </div>
                 <div
                   class="input-errors"
-                  data-test-id="password-errors"
+                  data-testid="password-errors"
                   *ngIf="password.invalid && password.touched"
                 >
                   <span *ngIf="password.getError('required')"
@@ -125,7 +125,7 @@ import {
               <div>
                 <button
                   type="submit"
-                  data-cy="submit"
+                  data-testid="submit"
                   [disabled]="signInForm.invalid"
                   [ngClass]="{
                     'disabled:opacity-50 cursor-not-allowed': signInForm.invalid
@@ -357,23 +357,23 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FedexIamFeatureSignInComponent {
-  readonly store = inject(Store);
+  private readonly store = inject(Store);
   private readonly formBuilder = inject(FormBuilder);
-  readonly isProcessing$ = this.store.select(selectIamProcessing);
-  readonly signInError$ = this.store.select(selectIamError);
 
-  readonly email = new FormControl('', [
+  public readonly isProcessing$ = this.store.select(selectIamProcessing);
+  public readonly signInError$ = this.store.select(selectIamError);
+  public readonly email = new FormControl('', [
     Validators.required,
     Validators.email,
     Validators.pattern(email),
   ]);
-  readonly password = new FormControl('', [Validators.required]);
-  readonly signInForm: FormGroup = this.formBuilder.group({
+  public readonly password = new FormControl('', [Validators.required]);
+  public readonly signInForm: FormGroup = this.formBuilder.group({
     email: this.email,
     password: this.password,
   });
 
-  onSubmit() {
+  public onSubmit() {
     this.store.dispatch(initSignIn(this.signInForm.value));
   }
 }

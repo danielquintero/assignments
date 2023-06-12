@@ -12,4 +12,4 @@ Run `nx test fedex-iam-data-access` to execute the unit tests.
 
 ## Running lint
 
-Run `nx lint fedex-iam-data-access` to execute the unit tests.
+Run `nx lint fedex-iam-data-access` to lint.

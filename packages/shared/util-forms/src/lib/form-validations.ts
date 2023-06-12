@@ -23,10 +23,11 @@ export function MustNotMatch(
       console.warn(
         `The control names passed to 'MustNotMatch' were not found! Please make sure you are supplying the correct names`
       );
-    }
-    const { value } = control;
-    if (includesValues(value, formGroup, matchingControls)) {
-      return { mustNotMatch: true };
+    } else {
+      const { value } = control;
+      if (includesValues(value, formGroup, matchingControls)) {
+        return { mustNotMatch: true };
+      }
     }
 
     return null;

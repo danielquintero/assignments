@@ -33,7 +33,7 @@ describe('IdentityAccessManagementService', () => {
 
     service.signin({ email, password }).subscribe();
 
-    const testRequest = expectOne(`${endpointURL}/signin`, HttpMethod.POST);
+    const testRequest = expectOne(`/api/signin`, HttpMethod.POST);
     flushAll([testRequest], [{}]);
   });
   it('signs up a user', () => {

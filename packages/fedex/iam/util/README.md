@@ -1,6 +1,6 @@
 # fedex-iam-util
 
-This library was generated with [Nx](https://nx.dev).
+A utility library hosting any Identity Access Management related functionality for the scope of Fedex.
 
 ## Running unit tests
 

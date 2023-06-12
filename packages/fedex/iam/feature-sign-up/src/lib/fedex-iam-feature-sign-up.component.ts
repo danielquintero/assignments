@@ -14,9 +14,7 @@ import {
 } from '@challenges/shared/util-forms';
 import { Store } from '@ngrx/store';
 import {
-  selectIamLoaded,
   initSignUp,
-  selectEntity,
   selectIamProcessing,
 } from '@challenges/fedex-iam-data-access';
 import { RouterModule } from '@angular/router';
@@ -30,7 +28,10 @@ import { RouterModule } from '@angular/router';
         <h2 class="fedex-iam-signup-create-account">Create a new account</h2>
         <p class="fedex-iam-signup-signin">
           Or
-          <a routerLink="/iam/sign-in">
+          <a
+            routerLink="/iam/sign-in"
+            data-testid="fedex-iam-signup-create-account"
+          >
             sign in if you already have an account.
           </a>
         </p>
@@ -59,7 +60,7 @@ import { RouterModule } from '@angular/router';
                 </div>
                 <div
                   class="input-errors"
-                  data-test-id="first-name-errors"
+                  data-testid="first-name-errors"
                   *ngIf="firstName.invalid && firstName.touched"
                 >
                   <span *ngIf="firstName.getError('required')"
@@ -85,7 +86,7 @@ import { RouterModule } from '@angular/router';
                 </div>
                 <div
                   class="input-errors"
-                  data-test-id="last-name-errors"
+                  data-testid="last-name-errors"
                   *ngIf="lastName.invalid && lastName.touched"
                 >
                   <span *ngIf="lastName.getError('required')"
@@ -111,7 +112,7 @@ import { RouterModule } from '@angular/router';
                 </div>
                 <div
                   class="input-errors"
-                  data-test-id="email-errors"
+                  data-testid="email-errors"
                   *ngIf="email.invalid && email.touched"
                 >
                   <span *ngIf="email.getError('required')"
@@ -140,7 +141,7 @@ import { RouterModule } from '@angular/router';
                 </div>
                 <div
                   class="input-errors"
-                  data-test-id="password-errors"
+                  data-testid="password-errors"
                   *ngIf="
                     (password.invalid || signUpForm.errors?.['mustNotMatch']) &&
                     password.touched
@@ -189,7 +190,7 @@ import { RouterModule } from '@angular/router';
               <div>
                 <button
                   type="submit"
-                  data-cy="submit"
+                  data-testid="submit"
                   [disabled]="signUpForm.invalid"
                   [ngClass]="{
                     'disabled:opacity-50 cursor-not-allowed': signUpForm.invalid
@@ -330,22 +331,22 @@ import { RouterModule } from '@angular/router';
 export class FedexIamFeatureSignUpComponent {
   private readonly formBuilder = inject(FormBuilder);
   private readonly store = inject(Store);
-  readonly isProcessing$ = this.store.select(selectIamProcessing);
 
-  readonly firstName = new FormControl('', [Validators.required]);
-  readonly lastName = new FormControl('', [Validators.required]);
-  readonly email = new FormControl('', [
+  public readonly isProcessing$ = this.store.select(selectIamProcessing);
+  public readonly firstName = new FormControl('', [Validators.required]);
+  public readonly lastName = new FormControl('', [Validators.required]);
+  public readonly email = new FormControl('', [
     Validators.required,
     Validators.email,
     Validators.pattern(email),
   ]);
-  readonly password = new FormControl('', [
+  public readonly password = new FormControl('', [
     Validators.required,
     Validators.minLength(8),
     ValidatePasswordStrength(),
   ]);
-  readonly rememberMe = new FormControl<boolean>(false);
-  readonly signUpForm: FormGroup = this.formBuilder.group(
+  public readonly rememberMe = new FormControl<boolean>(false);
+  public readonly signUpForm: FormGroup = this.formBuilder.group(
     {
       firstName: this.firstName,
       lastName: this.lastName,
@@ -358,7 +359,7 @@ export class FedexIamFeatureSignUpComponent {
     }
   );
 
-  onSubmit() {
+  public onSubmit() {
     this.store.dispatch(initSignUp(this.signUpForm.value));
   }
 }
