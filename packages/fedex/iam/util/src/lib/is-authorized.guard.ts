@@ -4,7 +4,7 @@ import { selectEntity } from '@challenges/fedex-iam-data-access';
 import { Store } from '@ngrx/store';
 import { mergeMap, of, tap } from 'rxjs';
 
-export const isAuthorizedGuard: CanActivateFn = (route, state) => {
+export const isAuthorizedGuard: CanActivateFn = () => {
   const router = inject(Router);
   const store = inject(Store);
 

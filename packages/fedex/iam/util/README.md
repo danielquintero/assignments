@@ -5,3 +5,7 @@ A utility library hosting any Identity Access Management related functionality f
 ## Running unit tests
 
 Run `nx test fedex-iam-util` to execute the unit tests.
+
+## Running lint
+
+Run `nx lint fedex-iam-util` to lint.

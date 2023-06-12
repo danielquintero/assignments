@@ -54,14 +54,18 @@ Extras
 
 ### How to run the project
 
-To run the sign up application simply run `nx serve sign-up`, make sure you have installed depedencies `npm i` beforehand.
+To run the sign up application simply run `nx serve fedex-sign-up`, make sure you have installed depedencies `npm i` beforehand.
 
-### Test & lint targets
+### How to build for production
+
+- `nx build fedex-sign-up --prod`
+
+### How to run test & lint
 
 To run lint or unit test that are related to this assignment, you can simply run:
 
 - `nx run-many -t test --projects=fedex-\* --parallel --coverage` for unit tests
-- `nx run-many --target=lint --projects=fedex-\* --parallel` for linting every app/library, respectively.
+- `nx run-many -t lint --projects=fedex-\* --parallel` for linting every app/library, respectively.
 
 Integration/e2e tests are also available for the features requested. You can run Cypress by running any of the following command:
 
